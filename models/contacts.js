@@ -18,6 +18,10 @@ const contactSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -30,17 +34,17 @@ const addSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
-const updateFavoriteSchema = joi.object({
-  favorite: joi.boolean().required().messages({
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required().messages({
     "any.required": "missing field favorite",
   }),
 });
 
-const schemas = { addSchema, updateFavoriteSchema };
+const contactSchemas = { addSchema, updateFavoriteSchema };
 
 const Contact = model("Contact", contactSchema);
 
 module.exports = {
-  schemas,
+  contactSchemas,
   Contact,
 };
