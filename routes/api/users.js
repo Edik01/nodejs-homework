@@ -1,3 +1,4 @@
+const { authenticate } = require("../../middlewares");
 const express = require("express");
 const ctrl = require("../../controllers/users");
 
@@ -13,5 +14,15 @@ router.post(
   ctrl.register
 );
 
+router.get("/current", authenticate, ctrl.currentUser);
+
 router.post("/login", validateBody(userSchemas.loginUserSchema), ctrl.login);
+
+router.patch(
+  "/",
+  authenticate,
+  validateBody(userSchemas.updateSubscription),
+  ctrl.updateSubscription
+);
+
 module.exports = router;
