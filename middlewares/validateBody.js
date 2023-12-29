@@ -1,6 +1,6 @@
 const { HttpError } = require("../helpers");
 
-const validateBodyContact = (schema) => {
+const validateBody = (schema) => {
   const func = (req, res, next) => {
     const { error } = schema.validate(req.body);
     if (error) {
@@ -10,4 +10,4 @@ const validateBodyContact = (schema) => {
   };
   return func;
 };
-module.exports = validateBodyContact;
+module.exports = validateBody;
