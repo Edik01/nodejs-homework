@@ -1,5 +1,4 @@
-const { ctrlWrapper, HttpError } = require("../../helpers");
-const bcrypt = require("bcrypt");
+const { ctrlWrapper } = require("../../helpers");
 const { User } = require("../../models/users");
 const updateSubscription = async (req, res) => {
   const { subscription } = req.body;
