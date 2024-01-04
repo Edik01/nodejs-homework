@@ -1,8 +1,6 @@
-const { authenticate, upload } = require("../../middlewares");
+const { authenticate, upload, validateBody } = require("../../middlewares");
 const express = require("express");
 const ctrl = require("../../controllers/users");
-
-const { validateBody } = require("../../middlewares");
 
 const { userSchemas } = require("../../models/users");
 
